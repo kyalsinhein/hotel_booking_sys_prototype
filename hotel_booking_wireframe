@@ -1,0 +1,1085 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hotel Booking System Wireframe</title>
+    <style>
+        :root {
+            --color-bg-primary: #fcfcf9;
+            --color-bg-secondary: #ffffff;
+            --color-text-primary: #134252;
+            --color-text-secondary: #626c71;
+            --color-border: rgba(94, 82, 64, 0.2);
+            --color-primary: #21808d;
+            --color-primary-hover: #1d7480;
+            --color-accent: #32b8c6;
+            --color-gray-light: #f5f5f5;
+            --color-gray-medium: #a7a9a9;
+        }
+
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --color-bg-primary: #1f2121;
+                --color-bg-secondary: #262828;
+                --color-text-primary: #f5f5f5;
+                --color-text-secondary: #a7a9a9;
+                --color-border: rgba(119, 124, 124, 0.3);
+                --color-primary: #32b8c6;
+                --color-primary-hover: #2da6b2;
+                --color-accent: #32b8c6;
+                --color-gray-light: #334155;
+                --color-gray-medium: #64748b;
+            }
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: var(--color-bg-primary);
+            color: var(--color-text-primary);
+            line-height: 1.6;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding: 20px;
+            background: var(--color-bg-secondary);
+            border-radius: 12px;
+            border: 1px solid var(--color-border);
+        }
+
+        .header h1 {
+            font-size: 2rem;
+            margin-bottom: 10px;
+            color: var(--color-primary);
+        }
+
+        .header p {
+            color: var(--color-text-secondary);
+            font-size: 1rem;
+        }
+
+        .screen-tabs {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 30px;
+            overflow-x: auto;
+            padding: 10px;
+            background: var(--color-bg-secondary);
+            border-radius: 12px;
+            border: 1px solid var(--color-border);
+        }
+
+        .tab-btn {
+            padding: 12px 24px;
+            background: transparent;
+            border: 1px solid var(--color-border);
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 0.95rem;
+            color: var(--color-text-primary);
+            transition: all 0.3s ease;
+            white-space: nowrap;
+        }
+
+        .tab-btn:hover {
+            background: var(--color-gray-light);
+        }
+
+        .tab-btn.active {
+            background: var(--color-primary);
+            color: white;
+            border-color: var(--color-primary);
+        }
+
+        .wireframe-screen {
+            display: none;
+            background: var(--color-bg-secondary);
+            border: 2px solid var(--color-border);
+            border-radius: 16px;
+            padding: 40px;
+            min-height: 600px;
+        }
+
+        .wireframe-screen.active {
+            display: block;
+        }
+
+        /* Wireframe Elements */
+        .wf-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            border-bottom: 2px solid var(--color-border);
+            margin-bottom: 30px;
+        }
+
+        .wf-logo {
+            width: 120px;
+            height: 40px;
+            background: var(--color-gray-light);
+            border: 2px dashed var(--color-border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+            color: var(--color-text-secondary);
+        }
+
+        .wf-nav {
+            display: flex;
+            gap: 20px;
+        }
+
+        .wf-nav-item {
+            padding: 8px 16px;
+            background: var(--color-gray-light);
+            border: 1px solid var(--color-border);
+            border-radius: 6px;
+            font-size: 0.9rem;
+        }
+
+        .wf-search-form {
+            background: var(--color-gray-light);
+            padding: 30px;
+            border-radius: 12px;
+            border: 2px solid var(--color-border);
+            margin-bottom: 30px;
+        }
+
+        .wf-form-row {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+
+        .wf-input {
+            padding: 12px;
+            border: 2px solid var(--color-border);
+            border-radius: 8px;
+            background: var(--color-bg-secondary);
+            font-size: 0.9rem;
+            color: var(--color-text-primary);
+        }
+
+        .wf-button {
+            padding: 12px 32px;
+            background: var(--color-primary);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .wf-button:hover {
+            background: var(--color-primary-hover);
+        }
+
+        .wf-button-secondary {
+            background: var(--color-gray-light);
+            color: var(--color-text-primary);
+            border: 1px solid var(--color-border);
+        }
+
+        .wf-card {
+            background: var(--color-bg-secondary);
+            border: 2px solid var(--color-border);
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+
+        .wf-card-header {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 15px;
+        }
+
+        .wf-image-placeholder {
+            width: 200px;
+            height: 150px;
+            background: var(--color-gray-light);
+            border: 2px dashed var(--color-border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+            color: var(--color-text-secondary);
+            border-radius: 8px;
+            flex-shrink: 0;
+        }
+
+        .wf-card-content {
+            flex: 1;
+        }
+
+        .wf-title {
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+            color: var(--color-primary);
+        }
+
+        .wf-subtitle {
+            font-size: 1rem;
+            color: var(--color-text-secondary);
+            margin-bottom: 10px;
+        }
+
+        .wf-tags {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin: 10px 0;
+        }
+
+        .wf-tag {
+            padding: 6px 12px;
+            background: var(--color-gray-light);
+            border: 1px solid var(--color-border);
+            border-radius: 6px;
+            font-size: 0.85rem;
+        }
+
+        .wf-price {
+            font-size: 1.5rem;
+            color: var(--color-primary);
+            font-weight: 600;
+            margin-top: 10px;
+        }
+
+        .wf-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .wf-form-group {
+            margin-bottom: 20px;
+        }
+
+        .wf-label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            font-size: 0.9rem;
+        }
+
+        .wf-textarea {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid var(--color-border);
+            border-radius: 8px;
+            background: var(--color-bg-secondary);
+            font-size: 0.9rem;
+            color: var(--color-text-primary);
+            resize: vertical;
+            min-height: 100px;
+            font-family: inherit;
+        }
+
+        .wf-summary {
+            background: var(--color-gray-light);
+            padding: 20px;
+            border-radius: 12px;
+            border: 2px solid var(--color-border);
+        }
+
+        .wf-summary-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid var(--color-border);
+        }
+
+        .wf-summary-row:last-child {
+            border-bottom: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+
+        .wf-status {
+            padding: 6px 12px;
+            border-radius: 6px;
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+
+        .wf-status-confirmed {
+            background: rgba(33, 128, 141, 0.15);
+            color: var(--color-primary);
+            border: 1px solid rgba(33, 128, 141, 0.25);
+        }
+
+        .wf-status-cancelled {
+            background: rgba(192, 21, 47, 0.15);
+            color: #c0152f;
+            border: 1px solid rgba(192, 21, 47, 0.25);
+        }
+
+        .wf-actions {
+            display: flex;
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .note {
+            margin-top: 30px;
+            padding: 20px;
+            background: var(--color-gray-light);
+            border-left: 4px solid var(--color-accent);
+            border-radius: 8px;
+        }
+
+        .note strong {
+            color: var(--color-primary);
+        }
+
+        @media (max-width: 768px) {
+            .wf-header {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .wf-card-header {
+                flex-direction: column;
+            }
+
+            .wf-image-placeholder {
+                width: 100%;
+                height: 200px;
+            }
+
+            .screen-tabs {
+                flex-wrap: nowrap;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🏨 Hotel Booking System Wireframes</h1>
+            <p>Interactive wireframe prototype showing all key screens and user flows</p>
+        </div>
+
+        <div class="screen-tabs">
+            <button class="tab-btn active" onclick="showScreen('home')">1. Home/Search</button>
+            <button class="tab-btn" onclick="showScreen('results')">2. Search Results</button>
+            <button class="tab-btn" onclick="showScreen('details')">3. Room Details</button>
+            <button class="tab-btn" onclick="showScreen('booking')">4. Booking Form</button>
+            <button class="tab-btn" onclick="showScreen('payment')">5. Payment</button>
+            <button class="tab-btn" onclick="showScreen('confirmation')">6. Confirmation</button>
+            <button class="tab-btn" onclick="showScreen('mybookings')">7. My Bookings</button>
+        </div>
+
+        <!-- Screen 1: Home/Search -->
+        <div id="home" class="wireframe-screen active">
+            <div class="wf-header">
+                <div class="wf-logo">HOTEL LOGO</div>
+                <div class="wf-nav">
+                    <div class="wf-nav-item">Home</div>
+                    <div class="wf-nav-item">My Bookings</div>
+                    <div class="wf-nav-item">Login / Register</div>
+                </div>
+            </div>
+
+            <h2 style="text-align: center; margin-bottom: 30px; font-size: 2rem;">Find Your Perfect Stay</h2>
+
+            <div class="wf-search-form">
+                <h3 style="margin-bottom: 20px;">Search Hotels</h3>
+                <div class="wf-form-row">
+                    <input type="text" class="wf-input" placeholder="Location (e.g., Bristol)" value="Bristol">
+                    <input type="date" class="wf-input" placeholder="Check-in Date">
+                    <input type="date" class="wf-input" placeholder="Check-out Date">
+                    <input type="number" class="wf-input" placeholder="Number of Guests" value="2">
+                </div>
+                <div class="wf-form-row">
+                    <select class="wf-input">
+                        <option>Room Type (Any)</option>
+                        <option>Standard Room</option>
+                        <option>Deluxe Room</option>
+                        <option>Suite</option>
+                    </select>
+                    <select class="wf-input">
+                        <option>Price Range (Any)</option>
+                        <option>£50 - £100</option>
+                        <option>£100 - £200</option>
+                        <option>£200+</option>
+                    </select>
+                </div>
+                <button class="wf-button">Search Available Rooms</button>
+            </div>
+
+            <div class="note">
+                <strong>Screen Purpose:</strong> Landing page where users start their hotel search journey. Clean, focused search form with essential filters.
+            </div>
+        </div>
+
+        <!-- Screen 2: Search Results -->
+        <div id="results" class="wireframe-screen">
+            <div class="wf-header">
+                <div class="wf-logo">HOTEL LOGO</div>
+                <div class="wf-nav">
+                    <div class="wf-nav-item">Home</div>
+                    <div class="wf-nav-item">My Bookings</div>
+                    <div class="wf-nav-item">Login / Register</div>
+                </div>
+            </div>
+
+            <h2 style="margin-bottom: 10px;">Available Hotels in Bristol</h2>
+            <p style="color: var(--color-text-secondary); margin-bottom: 30px;">Found 12 hotels for March 15-17, 2026 • 2 guests</p>
+
+            <div class="wf-card">
+                <div class="wf-card-header">
+                    <div class="wf-image-placeholder">Hotel Image<br>960 × 540px</div>
+                    <div class="wf-card-content">
+                        <div class="wf-title">Bristol Grand Hotel</div>
+                        <div class="wf-subtitle">⭐⭐⭐⭐⭐ 4.8 (245 reviews) • City Centre</div>
+                        <div class="wf-tags">
+                            <span class="wf-tag">🌐 Free WiFi</span>
+                            <span class="wf-tag">🍳 Breakfast Included</span>
+                            <span class="wf-tag">🅿️ Free Parking</span>
+                            <span class="wf-tag">♿ Accessible</span>
+                        </div>
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 15px;">
+                            <div>
+                                <div style="font-size: 0.9rem; color: var(--color-text-secondary);">Standard Room • 2 nights</div>
+                                <div class="wf-price">£180.00</div>
+                                <div style="font-size: 0.85rem; color: var(--color-text-secondary);">+ £36.00 tax</div>
+                            </div>
+                            <button class="wf-button">View Details</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="wf-card">
+                <div class="wf-card-header">
+                    <div class="wf-image-placeholder">Hotel Image<br>960 × 540px</div>
+                    <div class="wf-card-content">
+                        <div class="wf-title">Harbour View Inn</div>
+                        <div class="wf-subtitle">⭐⭐⭐⭐ 4.5 (182 reviews) • Harbourside</div>
+                        <div class="wf-tags">
+                            <span class="wf-tag">🌐 Free WiFi</span>
+                            <span class="wf-tag">🍳 Breakfast Available</span>
+                            <span class="wf-tag">🏊 Pool</span>
+                        </div>
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 15px;">
+                            <div>
+                                <div style="font-size: 0.9rem; color: var(--color-text-secondary);">Deluxe Room • 2 nights</div>
+                                <div class="wf-price">£240.00</div>
+                                <div style="font-size: 0.85rem; color: var(--color-text-secondary);">+ £48.00 tax</div>
+                            </div>
+                            <button class="wf-button">View Details</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="note">
+                <strong>Screen Purpose:</strong> Display search results with hotel cards showing images, ratings, amenities, pricing, and quick action buttons.
+            </div>
+        </div>
+
+        <!-- Screen 3: Room Details -->
+        <div id="details" class="wireframe-screen">
+            <div class="wf-header">
+                <div class="wf-logo">HOTEL LOGO</div>
+                <div class="wf-nav">
+                    <div class="wf-nav-item">Home</div>
+                    <div class="wf-nav-item">My Bookings</div>
+                    <div class="wf-nav-item">Login / Register</div>
+                </div>
+            </div>
+
+            <button class="wf-button wf-button-secondary" style="margin-bottom: 20px;">← Back to Results</button>
+
+            <div class="wf-title" style="margin-bottom: 10px;">Bristol Grand Hotel</div>
+            <div class="wf-subtitle" style="margin-bottom: 20px;">⭐⭐⭐⭐⭐ 4.8 (245 reviews) • 123 Queen Street, Bristol BS1 2AB</div>
+
+            <div class="wf-image-placeholder" style="width: 100%; height: 400px; margin-bottom: 30px;">
+                Hotel Image Gallery<br>1200 × 600px
+            </div>
+
+            <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 30px;">
+                <div>
+                    <h3 style="margin-bottom: 15px;">Room Options</h3>
+                    
+                    <div class="wf-card">
+                        <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 15px;">
+                            <div>
+                                <h4 style="margin-bottom: 8px;">Standard Room</h4>
+                                <p style="color: var(--color-text-secondary); font-size: 0.9rem;">Sleeps 2 • 1 Queen Bed • 25 m²</p>
+                            </div>
+                            <div style="text-align: right;">
+                                <div class="wf-price" style="font-size: 1.3rem;">£90.00</div>
+                                <div style="font-size: 0.85rem; color: var(--color-text-secondary);">per night</div>
+                            </div>
+                        </div>
+                        <div class="wf-tags">
+                            <span class="wf-tag">🌐 WiFi</span>
+                            <span class="wf-tag">📺 TV</span>
+                            <span class="wf-tag">❄️ A/C</span>
+                            <span class="wf-tag">🚿 Private Bath</span>
+                        </div>
+                        <button class="wf-button" style="width: 100%; margin-top: 15px;">Book This Room</button>
+                    </div>
+
+                    <div class="wf-card">
+                        <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 15px;">
+                            <div>
+                                <h4 style="margin-bottom: 8px;">Deluxe Room</h4>
+                                <p style="color: var(--color-text-secondary); font-size: 0.9rem;">Sleeps 2-3 • 1 King Bed • 35 m²</p>
+                            </div>
+                            <div style="text-align: right;">
+                                <div class="wf-price" style="font-size: 1.3rem;">£130.00</div>
+                                <div style="font-size: 0.85rem; color: var(--color-text-secondary);">per night</div>
+                            </div>
+                        </div>
+                        <div class="wf-tags">
+                            <span class="wf-tag">🌐 WiFi</span>
+                            <span class="wf-tag">📺 Smart TV</span>
+                            <span class="wf-tag">❄️ A/C</span>
+                            <span class="wf-tag">🛁 Bathtub</span>
+                            <span class="wf-tag">☕ Coffee Machine</span>
+                        </div>
+                        <button class="wf-button" style="width: 100%; margin-top: 15px;">Book This Room</button>
+                    </div>
+                </div>
+
+                <div>
+                    <div class="wf-summary">
+                        <h3 style="margin-bottom: 15px;">Booking Summary</h3>
+                        <div style="margin-bottom: 15px; padding-bottom: 15px; border-bottom: 1px solid var(--color-border);">
+                            <p style="font-size: 0.9rem; color: var(--color-text-secondary);">Check-in</p>
+                            <p style="font-weight: 500;">March 15, 2026</p>
+                        </div>
+                        <div style="margin-bottom: 15px; padding-bottom: 15px; border-bottom: 1px solid var(--color-border);">
+                            <p style="font-size: 0.9rem; color: var(--color-text-secondary);">Check-out</p>
+                            <p style="font-weight: 500;">March 17, 2026</p>
+                        </div>
+                        <div style="margin-bottom: 15px; padding-bottom: 15px; border-bottom: 1px solid var(--color-border);">
+                            <p style="font-size: 0.9rem; color: var(--color-text-secondary);">Duration</p>
+                            <p style="font-weight: 500;">2 nights</p>
+                        </div>
+                        <div>
+                            <p style="font-size: 0.9rem; color: var(--color-text-secondary);">Guests</p>
+                            <p style="font-weight: 500;">2 adults</p>
+                        </div>
+                    </div>
+
+                    <div class="wf-card" style="margin-top: 20px;">
+                        <h4 style="margin-bottom: 10px;">Amenities</h4>
+                        <ul style="list-style: none; padding: 0;">
+                            <li style="padding: 8px 0; border-bottom: 1px solid var(--color-border);">🌐 Free WiFi</li>
+                            <li style="padding: 8px 0; border-bottom: 1px solid var(--color-border);">🍳 Breakfast Included</li>
+                            <li style="padding: 8px 0; border-bottom: 1px solid var(--color-border);">🅿️ Free Parking</li>
+                            <li style="padding: 8px 0; border-bottom: 1px solid var(--color-border);">🏋️ Fitness Center</li>
+                            <li style="padding: 8px 0;">♿ Wheelchair Accessible</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="note">
+                <strong>Screen Purpose:</strong> Detailed hotel view with room options, amenities, pricing breakdown, and booking summary sidebar.
+            </div>
+        </div>
+
+        <!-- Screen 4: Booking Form -->
+        <div id="booking" class="wireframe-screen">
+            <div class="wf-header">
+                <div class="wf-logo">HOTEL LOGO</div>
+                <div class="wf-nav">
+                    <div class="wf-nav-item">Home</div>
+                    <div class="wf-nav-item">My Bookings</div>
+                    <div class="wf-nav-item">Login / Register</div>
+                </div>
+            </div>
+
+            <h2 style="margin-bottom: 30px;">Complete Your Booking</h2>
+
+            <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 30px;">
+                <div>
+                    <div class="wf-card">
+                        <h3 style="margin-bottom: 20px;">Guest Details</h3>
+                        
+                        <div class="wf-form-group">
+                            <label class="wf-label">Full Name *</label>
+                            <input type="text" class="wf-input" placeholder="John Smith">
+                        </div>
+
+                        <div class="wf-form-row">
+                            <div class="wf-form-group">
+                                <label class="wf-label">Email Address *</label>
+                                <input type="email" class="wf-input" placeholder="john.smith@email.com">
+                            </div>
+                            <div class="wf-form-group">
+                                <label class="wf-label">Phone Number *</label>
+                                <input type="tel" class="wf-input" placeholder="+44 7700 900000">
+                            </div>
+                        </div>
+
+                        <div class="wf-form-group">
+                            <label class="wf-label">Special Requests (Optional)</label>
+                            <textarea class="wf-textarea" placeholder="e.g., Early check-in, ground floor room, extra pillows..."></textarea>
+                        </div>
+                    </div>
+
+                    <div class="wf-card">
+                        <h3 style="margin-bottom: 20px;">Additional Services</h3>
+                        
+                        <label style="display: flex; align-items: center; gap: 10px; margin-bottom: 15px;">
+                            <input type="checkbox">
+                            <span>Breakfast (+£15.00 per person per day)</span>
+                        </label>
+
+                        <label style="display: flex; align-items: center; gap: 10px; margin-bottom: 15px;">
+                            <input type="checkbox">
+                            <span>Airport Transfer (+£35.00)</span>
+                        </label>
+
+                        <label style="display: flex; align-items: center; gap: 10px; margin-bottom: 15px;">
+                            <input type="checkbox">
+                            <span>Late Check-out (+£20.00)</span>
+                        </label>
+
+                        <label style="display: flex; align-items: center; gap: 10px;">
+                            <input type="checkbox">
+                            <span>Early Check-in (+£20.00)</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div>
+                    <div class="wf-summary">
+                        <h3 style="margin-bottom: 15px;">Booking Summary</h3>
+                        
+                        <div style="margin-bottom: 15px; padding-bottom: 15px; border-bottom: 1px solid var(--color-border);">
+                            <p style="font-weight: 500; margin-bottom: 5px;">Bristol Grand Hotel</p>
+                            <p style="font-size: 0.9rem; color: var(--color-text-secondary);">Standard Room</p>
+                        </div>
+
+                        <div style="margin-bottom: 15px; padding-bottom: 15px; border-bottom: 1px solid var(--color-border);">
+                            <p style="font-size: 0.9rem; color: var(--color-text-secondary);">March 15-17, 2026</p>
+                            <p style="font-weight: 500;">2 nights • 2 guests</p>
+                        </div>
+
+                        <div class="wf-summary-row">
+                            <span>Room Rate (2 nights)</span>
+                            <span>£180.00</span>
+                        </div>
+
+                        <div class="wf-summary-row">
+                            <span>VAT (20%)</span>
+                            <span>£36.00</span>
+                        </div>
+
+                        <div class="wf-summary-row">
+                            <span>Additional Services</span>
+                            <span>£0.00</span>
+                        </div>
+
+                        <div class="wf-summary-row">
+                            <span>Total Amount</span>
+                            <span style="color: var(--color-primary);">£216.00</span>
+                        </div>
+                    </div>
+
+                    <button class="wf-button" style="width: 100%; margin-top: 20px;">Proceed to Payment</button>
+
+                    <div style="margin-top: 20px; padding: 15px; background: var(--color-gray-light); border-radius: 8px; font-size: 0.85rem; color: var(--color-text-secondary);">
+                        <p><strong>Cancellation Policy:</strong></p>
+                        <p>Free cancellation 48+ hours before check-in. 50% refund for 24-48 hours. No refund within 24 hours.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="note">
+                <strong>Screen Purpose:</strong> Collect guest information, special requests, and optional services before payment. Shows clear pricing breakdown.
+            </div>
+        </div>
+
+        <!-- Screen 5: Payment -->
+        <div id="payment" class="wireframe-screen">
+            <div class="wf-header">
+                <div class="wf-logo">HOTEL LOGO</div>
+                <div class="wf-nav">
+                    <div class="wf-nav-item">Home</div>
+                    <div class="wf-nav-item">My Bookings</div>
+                    <div class="wf-nav-item">Login / Register</div>
+                </div>
+            </div>
+
+            <h2 style="margin-bottom: 30px;">Payment Details</h2>
+
+            <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 30px;">
+                <div>
+                    <div class="wf-card">
+                        <h3 style="margin-bottom: 20px;">Payment Method</h3>
+                        
+                        <div style="display: flex; gap: 15px; margin-bottom: 20px;">
+                            <button class="wf-button" style="flex: 1;">💳 Credit/Debit Card</button>
+                            <button class="wf-button wf-button-secondary" style="flex: 1;">PayPal</button>
+                        </div>
+
+                        <div class="wf-form-group">
+                            <label class="wf-label">Cardholder Name *</label>
+                            <input type="text" class="wf-input" placeholder="John Smith">
+                        </div>
+
+                        <div class="wf-form-group">
+                            <label class="wf-label">Card Number *</label>
+                            <input type="text" class="wf-input" placeholder="1234 5678 9012 3456">
+                        </div>
+
+                        <div class="wf-form-row">
+                            <div class="wf-form-group">
+                                <label class="wf-label">Expiry Date *</label>
+                                <input type="text" class="wf-input" placeholder="MM/YY">
+                            </div>
+                            <div class="wf-form-group">
+                                <label class="wf-label">CVV *</label>
+                                <input type="text" class="wf-input" placeholder="123">
+                            </div>
+                        </div>
+
+                        <div style="margin-top: 20px; padding: 15px; background: var(--color-gray-light); border-radius: 8px; display: flex; align-items: center; gap: 10px;">
+                            <span style="font-size: 1.5rem;">🔒</span>
+                            <div style="font-size: 0.85rem;">
+                                <strong>Secure Payment</strong><br>
+                                <span style="color: var(--color-text-secondary);">Your payment information is encrypted and secure</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="wf-card">
+                        <h3 style="margin-bottom: 15px;">Billing Address</h3>
+                        
+                        <label style="display: flex; align-items: center; gap: 10px; margin-bottom: 20px;">
+                            <input type="checkbox" checked>
+                            <span>Same as guest details</span>
+                        </label>
+
+                        <div class="wf-form-group">
+                            <label class="wf-label">Address Line 1 *</label>
+                            <input type="text" class="wf-input" placeholder="123 Main Street">
+                        </div>
+
+                        <div class="wf-form-group">
+                            <label class="wf-label">Address Line 2</label>
+                            <input type="text" class="wf-input" placeholder="Apartment, suite, etc. (optional)">
+                        </div>
+
+                        <div class="wf-form-row">
+                            <div class="wf-form-group">
+                                <label class="wf-label">City *</label>
+                                <input type="text" class="wf-input" placeholder="Bristol">
+                            </div>
+                            <div class="wf-form-group">
+                                <label class="wf-label">Postcode *</label>
+                                <input type="text" class="wf-input" placeholder="BS1 2AB">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div>
+                    <div class="wf-summary">
+                        <h3 style="margin-bottom: 15px;">Order Summary</h3>
+                        
+                        <div style="margin-bottom: 15px; padding-bottom: 15px; border-bottom: 1px solid var(--color-border);">
+                            <p style="font-weight: 500; margin-bottom: 5px;">Bristol Grand Hotel</p>
+                            <p style="font-size: 0.9rem; color: var(--color-text-secondary);">Standard Room</p>
+                            <p style="font-size: 0.9rem; color: var(--color-text-secondary);">March 15-17, 2026</p>
+                            <p style="font-size: 0.9rem; color: var(--color-text-secondary);">2 nights • 2 guests</p>
+                        </div>
+
+                        <div class="wf-summary-row">
+                            <span>Room Rate</span>
+                            <span>£180.00</span>
+                        </div>
+
+                        <div class="wf-summary-row">
+                            <span>VAT (20%)</span>
+                            <span>£36.00</span>
+                        </div>
+
+                        <div class="wf-summary-row">
+                            <span><strong>Total to Pay</strong></span>
+                            <span style="color: var(--color-primary);"><strong>£216.00</strong></span>
+                        </div>
+                    </div>
+
+                    <button class="wf-button" style="width: 100%; margin-top: 20px;">Complete Booking</button>
+
+                    <div style="margin-top: 20px; text-align: center; font-size: 0.85rem; color: var(--color-text-secondary);">
+                        <p>By completing this booking, you agree to the Terms &amp; Conditions and Privacy Policy</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="note">
+                <strong>Screen Purpose:</strong> Secure payment processing with card details, billing address, and final order summary. PCI-DSS compliant design.
+            </div>
+        </div>
+
+        <!-- Screen 6: Confirmation -->
+        <div id="confirmation" class="wireframe-screen">
+            <div class="wf-header">
+                <div class="wf-logo">HOTEL LOGO</div>
+                <div class="wf-nav">
+                    <div class="wf-nav-item">Home</div>
+                    <div class="wf-nav-item">My Bookings</div>
+                    <div class="wf-nav-item">Logout</div>
+                </div>
+            </div>
+
+            <div style="text-align: center; margin-bottom: 40px;">
+                <div style="font-size: 4rem; margin-bottom: 20px;">✅</div>
+                <h2 style="color: var(--color-primary); margin-bottom: 10px;">Booking Confirmed!</h2>
+                <p style="color: var(--color-text-secondary); font-size: 1.1rem;">Your reservation has been successfully completed</p>
+            </div>
+
+            <div class="wf-card" style="max-width: 800px; margin: 0 auto;">
+                <div style="text-align: center; padding: 20px; background: var(--color-gray-light); border-radius: 8px; margin-bottom: 30px;">
+                    <p style="font-size: 0.9rem; color: var(--color-text-secondary); margin-bottom: 5px;">Booking Reference</p>
+                    <p style="font-size: 2rem; font-weight: 600; color: var(--color-primary); font-family: monospace;">HB-20260315-1234</p>
+                </div>
+
+                <h3 style="margin-bottom: 20px;">Booking Details</h3>
+
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 30px;">
+                    <div>
+                        <p style="font-size: 0.9rem; color: var(--color-text-secondary); margin-bottom: 5px;">Hotel</p>
+                        <p style="font-weight: 500;">Bristol Grand Hotel</p>
+                        <p style="font-size: 0.9rem; color: var(--color-text-secondary);">123 Queen Street, Bristol BS1 2AB</p>
+                    </div>
+                    <div>
+                        <p style="font-size: 0.9rem; color: var(--color-text-secondary); margin-bottom: 5px;">Room Type</p>
+                        <p style="font-weight: 500;">Standard Room</p>
+                    </div>
+                    <div>
+                        <p style="font-size: 0.9rem; color: var(--color-text-secondary); margin-bottom: 5px;">Check-in</p>
+                        <p style="font-weight: 500;">March 15, 2026 (after 3:00 PM)</p>
+                    </div>
+                    <div>
+                        <p style="font-size: 0.9rem; color: var(--color-text-secondary); margin-bottom: 5px;">Check-out</p>
+                        <p style="font-weight: 500;">March 17, 2026 (before 11:00 AM)</p>
+                    </div>
+                    <div>
+                        <p style="font-size: 0.9rem; color: var(--color-text-secondary); margin-bottom: 5px;">Duration</p>
+                        <p style="font-weight: 500;">2 nights</p>
+                    </div>
+                    <div>
+                        <p style="font-size: 0.9rem; color: var(--color-text-secondary); margin-bottom: 5px;">Guests</p>
+                        <p style="font-weight: 500;">2 adults</p>
+                    </div>
+                </div>
+
+                <div style="padding: 20px; background: var(--color-gray-light); border-radius: 8px; margin-bottom: 30px;">
+                    <div style="display: flex; justify-content: space-between; margin-bottom: 10px;">
+                        <span>Room Rate (2 nights)</span>
+                        <span>£180.00</span>
+                    </div>
+                    <div style="display: flex; justify-content: space-between; margin-bottom: 10px;">
+                        <span>VAT (20%)</span>
+                        <span>£36.00</span>
+                    </div>
+                    <div style="display: flex; justify-content: space-between; padding-top: 10px; border-top: 2px solid var(--color-border); font-size: 1.2rem; font-weight: 600;">
+                        <span>Total Paid</span>
+                        <span style="color: var(--color-primary);">£216.00</span>
+                    </div>
+                </div>
+
+                <div style="padding: 20px; background: rgba(33, 128, 141, 0.1); border: 1px solid var(--color-primary); border-radius: 8px; margin-bottom: 20px;">
+                    <p style="font-weight: 500; margin-bottom: 10px;">📧 Confirmation Email Sent</p>
+                    <p style="font-size: 0.9rem; color: var(--color-text-secondary);">We've sent a confirmation email to <strong>john.smith@email.com</strong> with your booking details and QR code for contactless check-in.</p>
+                </div>
+
+                <div style="display: flex; gap: 15px;">
+                    <button class="wf-button" style="flex: 1;">View My Bookings</button>
+                    <button class="wf-button wf-button-secondary" style="flex: 1;">Download PDF</button>
+                </div>
+            </div>
+
+            <div class="note">
+                <strong>Screen Purpose:</strong> Success confirmation with booking reference, complete details, payment summary, and next action options.
+            </div>
+        </div>
+
+        <!-- Screen 7: My Bookings -->
+        <div id="mybookings" class="wireframe-screen">
+            <div class="wf-header">
+                <div class="wf-logo">HOTEL LOGO</div>
+                <div class="wf-nav">
+                    <div class="wf-nav-item">Home</div>
+                    <div class="wf-nav-item">My Bookings</div>
+                    <div class="wf-nav-item">Logout</div>
+                </div>
+            </div>
+
+            <h2 style="margin-bottom: 30px;">My Bookings</h2>
+
+            <div style="margin-bottom: 20px;">
+                <button class="wf-button wf-button-secondary" style="margin-right: 10px;">Upcoming</button>
+                <button class="wf-button wf-button-secondary">Past</button>
+            </div>
+
+            <div class="wf-card">
+                <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 15px;">
+                    <div>
+                        <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 8px;">
+                            <h3 style="margin: 0;">Bristol Grand Hotel</h3>
+                            <span class="wf-status wf-status-confirmed">Confirmed</span>
+                        </div>
+                        <p style="color: var(--color-text-secondary); font-size: 0.9rem;">Standard Room • 2 nights • 2 guests</p>
+                    </div>
+                    <div style="text-align: right;">
+                        <p style="font-size: 0.9rem; color: var(--color-text-secondary);">Booking Ref</p>
+                        <p style="font-weight: 500; font-family: monospace;">HB-20260315-1234</p>
+                    </div>
+                </div>
+
+                <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin: 20px 0; padding: 20px; background: var(--color-gray-light); border-radius: 8px;">
+                    <div>
+                        <p style="font-size: 0.9rem; color: var(--color-text-secondary); margin-bottom: 5px;">Check-in</p>
+                        <p style="font-weight: 500;">March 15, 2026</p>
+                    </div>
+                    <div>
+                        <p style="font-size: 0.9rem; color: var(--color-text-secondary); margin-bottom: 5px;">Check-out</p>
+                        <p style="font-weight: 500;">March 17, 2026</p>
+                    </div>
+                    <div>
+                        <p style="font-size: 0.9rem; color: var(--color-text-secondary); margin-bottom: 5px;">Total Paid</p>
+                        <p style="font-weight: 500; color: var(--color-primary);">£216.00</p>
+                    </div>
+                </div>
+
+                <div class="wf-actions">
+                    <button class="wf-button">View Details</button>
+                    <button class="wf-button wf-button-secondary">Download Confirmation</button>
+                    <button class="wf-button wf-button-secondary" style="color: #c0152f;">Cancel Booking</button>
+                </div>
+            </div>
+
+            <div class="wf-card">
+                <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 15px;">
+                    <div>
+                        <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 8px;">
+                            <h3 style="margin: 0;">Harbour View Inn</h3>
+                            <span class="wf-status wf-status-confirmed">Confirmed</span>
+                        </div>
+                        <p style="color: var(--color-text-secondary); font-size: 0.9rem;">Deluxe Room • 3 nights • 2 guests</p>
+                    </div>
+                    <div style="text-align: right;">
+                        <p style="font-size: 0.9rem; color: var(--color-text-secondary);">Booking Ref</p>
+                        <p style="font-weight: 500; font-family: monospace;">HB-20260420-5678</p>
+                    </div>
+                </div>
+
+                <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin: 20px 0; padding: 20px; background: var(--color-gray-light); border-radius: 8px;">
+                    <div>
+                        <p style="font-size: 0.9rem; color: var(--color-text-secondary); margin-bottom: 5px;">Check-in</p>
+                        <p style="font-weight: 500;">April 20, 2026</p>
+                    </div>
+                    <div>
+                        <p style="font-size: 0.9rem; color: var(--color-text-secondary); margin-bottom: 5px;">Check-out</p>
+                        <p style="font-weight: 500;">April 23, 2026</p>
+                    </div>
+                    <div>
+                        <p style="font-size: 0.9rem; color: var(--color-text-secondary); margin-bottom: 5px;">Total Paid</p>
+                        <p style="font-weight: 500; color: var(--color-primary);">£432.00</p>
+                    </div>
+                </div>
+
+                <div class="wf-actions">
+                    <button class="wf-button">View Details</button>
+                    <button class="wf-button wf-button-secondary">Modify Booking</button>
+                    <button class="wf-button wf-button-secondary" style="color: #c0152f;">Cancel Booking</button>
+                </div>
+            </div>
+
+            <div class="wf-card" style="opacity: 0.7;">
+                <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 15px;">
+                    <div>
+                        <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 8px;">
+                            <h3 style="margin: 0;">City Central Hotel</h3>
+                            <span class="wf-status wf-status-cancelled">Cancelled</span>
+                        </div>
+                        <p style="color: var(--color-text-secondary); font-size: 0.9rem;">Suite • 1 night • 2 guests</p>
+                    </div>
+                    <div style="text-align: right;">
+                        <p style="font-size: 0.9rem; color: var(--color-text-secondary);">Booking Ref</p>
+                        <p style="font-weight: 500; font-family: monospace;">HB-20260210-9012</p>
+                    </div>
+                </div>
+
+                <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin: 20px 0; padding: 20px; background: var(--color-gray-light); border-radius: 8px;">
+                    <div>
+                        <p style="font-size: 0.9rem; color: var(--color-text-secondary); margin-bottom: 5px;">Check-in</p>
+                        <p style="font-weight: 500;">February 10, 2026</p>
+                    </div>
+                    <div>
+                        <p style="font-size: 0.9rem; color: var(--color-text-secondary); margin-bottom: 5px;">Check-out</p>
+                        <p style="font-weight: 500;">February 11, 2026</p>
+                    </div>
+                    <div>
+                        <p style="font-size: 0.9rem; color: var(--color-text-secondary); margin-bottom: 5px;">Refund Issued</p>
+                        <p style="font-weight: 500; color: var(--color-primary);">£180.00</p>
+                    </div>
+                </div>
+
+                <div class="wf-actions">
+                    <button class="wf-button wf-button-secondary">View Details</button>
+                </div>
+            </div>
+
+            <div class="note">
+                <strong>Screen Purpose:</strong> User dashboard showing all bookings (upcoming, past, cancelled) with status, details, and management actions (view, modify, cancel).
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function showScreen(screenId) {
+            // Hide all screens
+            const screens = document.querySelectorAll('.wireframe-screen');
+            screens.forEach(screen => screen.classList.remove('active'));
+
+            // Remove active class from all tabs
+            const tabs = document.querySelectorAll('.tab-btn');
+            tabs.forEach(tab => tab.classList.remove('active'));
+
+            // Show selected screen
+            document.getElementById(screenId).classList.add('active');
+
+            // Add active class to clicked tab
+            event.target.classList.add('active');
+
+            // Scroll to top
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+    </script>
+</body>
+</html>
+
